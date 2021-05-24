@@ -21,7 +21,12 @@ export default async function handler(req, res) {
 	// 	}
 	// )
 
-	client.query("SELECT * FROM users;", (err, res) => {
+	const setUserMoodsQuery = `
+		INSERT INTO user_moods(user_id, mood_id)
+			VALUES(0, 2)
+	`
+
+	client.query(setUserMoodsQuery, (err, res) => {
 		if (err) throw err
 		for (let row of res.rows) {
 			console.log(JSON.stringify(row))

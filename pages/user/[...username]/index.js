@@ -13,11 +13,37 @@ export default function UserProfile() {
 		setSelectedMood(event.target.id)
 	}
 
+	const handleMoodSubmit = () => {
+		try {
+			fetch("/api/user/set-moods")
+		} catch (error) {
+			res.status(400).json({ mesage: error })
+		}
+	}
+
+	const handleMoodFetch = () => {
+		try {
+			fetch("/api/user/get-moods")
+		} catch (error) {
+			res.status(400).json({ mesage: error })
+		}
+	}
+
 	const name = "Andrew"
+
+	// let moods = []
 	const moods = [
-		{ text: "Bright", id: "bright", color: "yellow" },
-		{ text: "Cloudy", id: "cloudy", color: "blue" },
+		{ text: "Bright", color: "yellow" },
+		{ text: "Cloudy", color: "blue" },
 	]
+
+	if (!moods) {
+		return "Loading moods"
+	}
+
+	if (moods.length === 0) {
+		return "Uh-oh, we lost our temper. Seriously, where did it go? It looks like you haven't selected any moods."
+	}
 
 	return (
 		<Fragment>
@@ -29,12 +55,12 @@ export default function UserProfile() {
 					moodSelectHandler={moodSelectHandler}
 					selectedMood={selectedMood}
 				/>
-				{/* <div className={styles.setMoodContainer}>
-					<MoodButton text="Bright" id="bright" color="yellow" />
-				</div>
-				<div className={styles.setMoodContainer}>
-					<MoodButton text="Cloudy" id="cloudy" color="blue" />
-				</div> */}
+				<button className={styles.moodSubmit} onClick={handleMoodSubmit}>
+					Set Mood
+				</button>
+				<button className={styles.moodSubmit} onClick={handleMoodFetch}>
+					Get Mood
+				</button>
 			</main>
 		</Fragment>
 	)
