@@ -4,7 +4,12 @@ import {
 } from "../../../helpers/database/postgres-functions"
 
 export default async function handler(req, res) {
-	const client = connectToDatabase()
+	let client
+	try {
+		client = connectToDatabase()
+	} catch (error) {
+		res.status(500).json({ message: "Could not connect to database!" })
+	}
 
 	client.connect()
 
@@ -13,9 +18,14 @@ export default async function handler(req, res) {
 		FROM moods
 		`
 
-	const response = queryDatabase(getAllMoodsQuery, client)
+	let response
+	try {
+		response = queryDatabase(getAllMoodsQuery, client)
+	} catch (error) {
+		res.status(500).json({ message: "Could not complete query" })
+	}
 
-	console.log(response)
-
-	res.status(201).json({ message: "Successfully fetched list of moods" })
+	res
+		.status(201)
+		.json({ message: "Successfully fetched list of moods", data: response })
 }

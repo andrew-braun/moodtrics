@@ -14,12 +14,12 @@ export function connectToDatabase() {
 export function queryDatabase(query, client) {
 	let response = []
 
-	client.query(query, (err, res) => {
+	const result = client.query(query, (err, res) => {
 		if (err) throw err
 		for (let row of res.rows) {
-			console.log(JSON.stringify(row))
 			response.push(row)
 		}
+		console.log(response)
 		client.end()
 	})
 
