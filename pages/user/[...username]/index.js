@@ -15,17 +15,25 @@ export default function UserProfile() {
 
 	const handleMoodSubmit = () => {
 		try {
-			fetch("/api/user/set-moods")
+			fetch("/api/user/set-mood")
 		} catch (error) {
-			res.status(400).json({ mesage: error })
+			console.log(error)
 		}
 	}
 
 	const handleMoodFetch = () => {
 		try {
-			fetch("/api/user/get-moods")
+			fetch("/api/user/get-user-mood-history")
 		} catch (error) {
-			res.status(400).json({ mesage: error })
+			console.log(error)
+		}
+	}
+
+	const handleFetchAllMoods = () => {
+		try {
+			fetch("/api/moods/get-all-moods")
+		} catch (error) {
+			console.log(error)
 		}
 	}
 
@@ -60,6 +68,9 @@ export default function UserProfile() {
 				</button>
 				<button className={styles.moodSubmit} onClick={handleMoodFetch}>
 					Get Mood
+				</button>
+				<button className={styles.moodSubmit} onClick={handleFetchAllMoods}>
+					Get All Moods
 				</button>
 			</main>
 		</Fragment>
