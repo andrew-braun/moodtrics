@@ -9,23 +9,17 @@ export default function MoodGrid(props) {
 	useEffect(() => {
 		async function fetchAllMoods() {
 			const response = await fetch("/api/moods/get-all-moods")
+			const data = await response.json()
+			await setMoodList(data.data)
+			console.log(data.data)
 			return response
 		}
-		setMoodList(fetchAllMoods().data)
+		fetchAllMoods()
 	}, [])
 
 	if (!moodList) {
 		return "Loading..."
 	}
-
-	async function fetchAllMoods() {
-		const response = await fetch("/api/moods/get-all-moods")
-		return response
-	}
-
-	const response = fetchAllMoods()
-		.then((response) => response.json())
-		.then((data) => console.log(data))
 
 	const moodButtons = moodList.map((moodObject) => {
 		const { mood, color } = moodObject
@@ -35,9 +29,10 @@ export default function MoodGrid(props) {
 				color={color}
 				moodSelectHandler={moodSelectHandler}
 				selectedMood={selectedMood}
-				key={`${text}-${color}`}
+				key={`${mood}-${color}`}
 			/>
 		)
 	})
+
 	return <div className={styles.moodGridContainer}>{moodButtons}</div>
 }
