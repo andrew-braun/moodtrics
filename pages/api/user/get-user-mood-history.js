@@ -4,9 +4,9 @@ import {
 } from "../../../helpers/database/postgres-functions"
 
 export default async function handler(req, res) {
-	const client = connectToDatabase()
+	const pool = connectToDatabase()
 
-	client.connect()
+	pool.connect()
 
 	const getUserMoodsQuery = `
 		SELECT mood, mood_rating, color, time_recorded 
@@ -14,7 +14,7 @@ export default async function handler(req, res) {
 		INNER JOIN moods USING(mood_id)
 		WHERE user_id = 0
 		`
-	const response = await queryDatabase(getUserMoodsQuery, client)
+	const response = await queryDatabase(getUserMoodsQuery, pool)
 
 	res.status(201).json({ message: response })
 }

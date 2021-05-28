@@ -39,7 +39,6 @@ export default function UserProfile() {
 
 	const name = "Andrew"
 
-	// let moods = []
 	const moods = [
 		{ text: "Bright", color: "yellow" },
 		{ text: "Cloudy", color: "blue" },

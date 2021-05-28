@@ -7,30 +7,31 @@ export default function MoodGrid(props) {
 	const [moodList, setMoodList] = useState()
 
 	useEffect(() => {
-		fetch("/api/moods/get-all-moods")
-			.then((response) => response.json())
-			.then((data) => console.log(data))
-			.then((data) => setMoodList(data))
-		// async function fetchMoods() {
-		// 	const response = await fetch("/api/moods/get-all-moods")
-		// 	const data = await response.json()
-		// 	await setMoodList(data)
-		// 	console.log(data)
-		// }
-		// fetchMoods()
+		async function fetchAllMoods() {
+			const response = await fetch("/api/moods/get-all-moods")
+			return response
+		}
+		setMoodList(fetchAllMoods().data)
 	}, [])
 
 	if (!moodList) {
 		return "Loading..."
 	}
 
-	console.log(moodList)
+	async function fetchAllMoods() {
+		const response = await fetch("/api/moods/get-all-moods")
+		return response
+	}
 
-	const moodButtons = moods.map((mood) => {
-		const { text, color } = mood
+	const response = fetchAllMoods()
+		.then((response) => response.json())
+		.then((data) => console.log(data))
+
+	const moodButtons = moodList.map((moodObject) => {
+		const { mood, color } = moodObject
 		return (
 			<MoodButton
-				text={text}
+				text={mood}
 				color={color}
 				moodSelectHandler={moodSelectHandler}
 				selectedMood={selectedMood}

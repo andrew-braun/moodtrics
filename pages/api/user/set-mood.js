@@ -4,16 +4,16 @@ import {
 } from "../../../helpers/database/postgres-functions"
 
 export default async function handler(req, res) {
-	const client = connectToDatabase()
+	const pool = connectToDatabase()
 
-	client.connect()
+	pool.connect()
 
 	const setUserMoodsQuery = `
 		INSERT INTO user_moods(user_id, mood_id)
 			VALUES(0, 2)
 	`
 
-	const response = queryDatabase(setUserMoodsQuery, client)
+	const response = await queryDatabase(setUserMoodsQuery, pool)
 
-	res.status(201).json({ message: "It worked!" })
+	res.status(201).json({ message: "It worked!", data: response })
 }

@@ -12,10 +12,11 @@ export default async function handler(req, res) {
 		`
 
 	let response = await queryDatabase(getAllMoodsQuery, pool)
+	let data = response.results
 
 	res
 		.status(201)
-		.json({ message: "Successfully fetched list of moods", data: response })
+		.json({ message: "Successfully fetched list of moods", data: data })
 }
 
 // import {
