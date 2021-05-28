@@ -1,27 +1,29 @@
-import { Client } from "pg"
+import { Client, Pool } from "pg"
 
 export function connectToDatabase() {
-	const client = new Client({
+	const pool = new Pool({
 		connectionString: process.env.HEROKU_CONNECTION_URL,
 		ssl: {
 			rejectUnauthorized: false,
 		},
 	})
 
-	return client
+	return pool
 }
 
-export function queryDatabase(query, client) {
-	let response = []
+export async function queryDatabase(query, pool) {
+	let response
 
-	const result = client.query(query, (err, res) => {
-		if (err) throw err
-		for (let row of res.rows) {
-			response.push(row)
-		}
-		console.log(response)
-		client.end()
-	})
+	try {
+		const client = await pool.connect()
+		const result = await client.query(query)
+		const results = { results: result ? result.rows : null }
+		response = results
+		client.release()
+	} catch (err) {
+		console.error(err)
+		res.send("Error " + err)
+	}
 
 	return response
 }

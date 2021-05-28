@@ -14,7 +14,7 @@ export default async function handler(req, res) {
 		INNER JOIN moods USING(mood_id)
 		WHERE user_id = 0
 		`
-	const response = queryDatabase(getUserMoodsQuery, client)
+	const response = await queryDatabase(getUserMoodsQuery, client)
 
 	res.status(201).json({ message: response })
 }

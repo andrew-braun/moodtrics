@@ -2,33 +2,16 @@ import {
 	connectToDatabase,
 	queryDatabase,
 } from "../../../helpers/database/postgres-functions"
-import { Pool } from "pg"
 
 export default async function handler(req, res) {
-	const pool = new Pool({
-		connectionString: process.env.HEROKU_CONNECTION_URL,
-		ssl: {
-			rejectUnauthorized: false,
-		},
-	})
+	const pool = connectToDatabase()
 
 	const getAllMoodsQuery = `
 		SELECT mood, mood_rating, color
 		FROM moods
 		`
 
-	let response
-
-	try {
-		const client = await pool.connect()
-		const result = await client.query("SELECT * FROM moods")
-		const results = { results: result ? result.rows : null }
-		response = results
-		client.release()
-	} catch (err) {
-		console.error(err)
-		res.send("Error " + err)
-	}
+	let response = await queryDatabase(getAllMoodsQuery, pool)
 
 	res
 		.status(201)
