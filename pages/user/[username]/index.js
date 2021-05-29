@@ -1,9 +1,13 @@
 import { Fragment, useState } from "react"
+import { fetchAllMoods } from "../../../helpers/api/mood-api"
 import MoodGrid from "../../../components/mood-interactions/MoodGrid/MoodGrid"
 import styles from "./user-profile.module.css"
 
-export default function UserProfile() {
+export default function UserProfile(props) {
+	const { allMoods, username } = props
 	const [selectedMood, setSelectedMood] = useState("")
+
+	console.log(props)
 
 	const moodSelectHandler = (event) => {
 		if (selectedMood === event.target.id) {
@@ -39,16 +43,11 @@ export default function UserProfile() {
 
 	const name = "Andrew"
 
-	const moods = [
-		{ text: "Bright", color: "yellow" },
-		{ text: "Cloudy", color: "blue" },
-	]
-
-	if (!moods) {
+	if (!allMoods) {
 		return "Loading moods"
 	}
 
-	if (moods.length === 0) {
+	if (allMoods.length === 0) {
 		return "Uh-oh, we lost our temper. Seriously, where did it go? It looks like you haven't selected any moods."
 	}
 
@@ -58,7 +57,7 @@ export default function UserProfile() {
 			<p>Today it's... {selectedMood}</p>
 			<main>
 				<MoodGrid
-					moods={moods}
+					moods={allMoods}
 					moodSelectHandler={moodSelectHandler}
 					selectedMood={selectedMood}
 				/>
@@ -74,4 +73,20 @@ export default function UserProfile() {
 			</main>
 		</Fragment>
 	)
+}
+
+export async function getStaticProps() {
+	return {
+		props: {
+			allMoods: await fetchAllMoods(),
+		},
+	}
+}
+
+export async function getStaticPaths() {
+	const paths = [{ params: { username: "andrewbraun" } }]
+	return {
+		paths,
+		fallback: false,
+	}
 }
