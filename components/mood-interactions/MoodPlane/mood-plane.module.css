@@ -1,0 +1,56 @@
+.moodPlaneContainer {
+	width: 80%;
+	margin: auto;
+}
+
+.moodPlane {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	grid-template-areas:
+		"quadrant1 quadrant2"
+		"quadrant4 quadrant3";
+	height: 320px;
+	width: 320px;
+}
+
+.quadrant {
+	display: grid;
+	grid-template-columns: repeat(10, minmax(10px, 1fr));
+	grid-template-rows: repeat(10, 1fr);
+	border-color: black;
+	border-style: solid;
+}
+
+.quadrant1 {
+	grid-area: quadrant1;
+	border-width: 0 1px 1px 0;
+	background: green;
+}
+
+.quadrant2 {
+	grid-area: quadrant2;
+	border-width: 0 0 1px 1px;
+}
+
+.quadrant3 {
+	grid-area: quadrant3;
+	border-width: 1px 0 0 1px;
+}
+
+.quadrant4 {
+	grid-area: quadrant4;
+	border-width: 1px 1px 0 0;
+}
+
+.point {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.point:hover {
+	background: yellow;
+	border: 1px solid black;
+	cursor: pointer;
+}
