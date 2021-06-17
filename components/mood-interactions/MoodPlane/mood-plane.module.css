@@ -25,32 +25,46 @@
 .quadrant1 {
 	grid-area: quadrant1;
 	border-width: 0 1px 1px 0;
-	background: green;
+	background: hsla(352, 68%, 55%, 0.9);
 }
 
 .quadrant2 {
 	grid-area: quadrant2;
 	border-width: 0 0 1px 1px;
+	background: hsla(50, 91%, 64%, 0.9);
 }
 
 .quadrant3 {
 	grid-area: quadrant3;
 	border-width: 1px 0 0 1px;
+	background: hsla(147, 68%, 44%, 0.9);
 }
 
 .quadrant4 {
 	grid-area: quadrant4;
 	border-width: 1px 1px 0 0;
+	background: hsla(248, 31%, 55%, 0.9);
 }
 
 .point {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	padding: 0;
+	color: white;
 }
 
 .point:hover {
-	background: yellow;
-	border: 1px solid black;
+	background: hsla(210, 5%, 16%, 1);
+	border: 1px dotted black;
 	cursor: pointer;
+}
+
+.pointCoordinates {
+	display: none;
+	font-size: 0.5rem;
+}
+
+.point:hover .pointCoordinates {
+	display: block;
 }

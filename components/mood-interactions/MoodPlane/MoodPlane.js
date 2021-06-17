@@ -21,7 +21,7 @@ export default function MoodPlane(props) {
 			for (let x = leftXValue; x <= rightXValue; x++)
 				filledQuadrant.push(
 					<div className={`${styles.point}`} key={`${x}-${y}`}>
-						{x}
+						<span className={styles.pointCoordinates}>{`${x}, ${y}`}</span>
 					</div>
 				)
 		}
