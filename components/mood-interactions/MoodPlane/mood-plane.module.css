@@ -47,6 +47,7 @@
 }
 
 .point {
+	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -55,14 +56,19 @@
 }
 
 .point:hover {
-	background: hsla(210, 5%, 16%, 1);
-	border: 1px dotted black;
+	background: #3f386b;
 	cursor: pointer;
 }
 
 .pointCoordinates {
+	position: absolute;
 	display: none;
-	font-size: 0.5rem;
+	width: 4.2rem;
+	padding: 0.2rem;
+	background: hsla(210, 5%, 16%, 1);
+	font-size: 1.1rem;
+	text-align: center;
+	transform: translate(2.8rem, -1.7rem);
 }
 
 .point:hover .pointCoordinates {
