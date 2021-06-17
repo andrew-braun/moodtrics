@@ -1,9 +1,49 @@
 .moodPlaneContainer {
+	display: grid;
+	grid-template-columns: 5% 90% 5%;
+	grid-template-rows: 5% 90% 5%;
+	grid-template-areas:
+		". yTopLabel ."
+		"xLeftLabel moodPlane xRightLabel"
+		". yBottomLabel .";
 	width: 80%;
 	margin: auto;
 }
 
+.axisLabel {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+}
+
+.yTopLabel {
+	grid-area: yTopLabel;
+}
+
+.yBottomLabel {
+	grid-area: yBottomLabel;
+}
+
+.xLeftLabel {
+	grid-area: xLeftLabel;
+}
+
+.xLeftLabel p {
+	transform: rotate(-90deg);
+	margin: auto;
+}
+
+.xRightLabel {
+	grid-area: xRightLabel;
+}
+
+.xRightLabel p {
+	transform: rotate(90deg);
+	margin: auto;
+}
+
 .moodPlane {
+	grid-area: moodPlane;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: 1fr 1fr;
@@ -73,4 +113,7 @@
 
 .point:hover .pointCoordinates {
 	display: block;
+}
+
+.yTopLabel {
 }
