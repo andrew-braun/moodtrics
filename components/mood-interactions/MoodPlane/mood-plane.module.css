@@ -1,45 +1,47 @@
 .moodPlaneContainer {
+	position: relative;
 	display: grid;
-	grid-template-columns: 5% 90% 5%;
-	grid-template-rows: 5% 90% 5%;
+	grid-template-columns: 2% 90% 2%;
+	grid-template-rows: 2% 90% 2%;
 	grid-template-areas:
 		". yTopLabel ."
 		"xLeftLabel moodPlane xRightLabel"
 		". yBottomLabel .";
-	width: 80%;
+	justify-items: center;
+	align-items: center;
+	justify-content: center;
+	align-content: center;
+	width: clamp(320px, 40vw, 640px);
+	height: clamp(320px, 40vw, 640px);
 	margin: auto;
 }
 
 .axisLabel {
-	display: flex;
-	justify-content: center;
-	text-align: center;
+	font-size: 2rem;
+	min-width: 2%;
+	min-height: 2%;
 }
 
 .yTopLabel {
 	grid-area: yTopLabel;
+	margin-bottom: -10%;
 }
 
 .yBottomLabel {
 	grid-area: yBottomLabel;
+	margin-top: -10%;
 }
 
 .xLeftLabel {
-	grid-area: xLeftLabel;
-}
-
-.xLeftLabel p {
 	transform: rotate(-90deg);
-	margin: auto;
+	grid-area: xLeftLabel;
+	margin-right: -2rem;
 }
 
 .xRightLabel {
-	grid-area: xRightLabel;
-}
-
-.xRightLabel p {
 	transform: rotate(90deg);
-	margin: auto;
+	grid-area: xRightLabel;
+	margin-left: -2rem;
 }
 
 .moodPlane {
@@ -50,8 +52,8 @@
 	grid-template-areas:
 		"quadrant1 quadrant2"
 		"quadrant4 quadrant3";
-	height: 320px;
-	width: 320px;
+	min-height: 80%;
+	min-width: 80%;
 }
 
 .quadrant {

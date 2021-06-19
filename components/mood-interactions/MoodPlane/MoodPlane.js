@@ -31,16 +31,16 @@ export default function MoodPlane(props) {
 	return (
 		<div className={styles.moodPlaneContainer}>
 			<div className={`${styles.axisLabel} ${styles.yTopLabel}`}>
-				<p>Activated</p>
+				<span>Activated</span>
 			</div>
 			<div className={`${styles.axisLabel} ${styles.yBottomLabel}`}>
-				<p>Deactivated</p>
+				<span>Deactivated</span>
 			</div>
 			<div className={`${styles.axisLabel} ${styles.xLeftLabel}`}>
-				<p>Negative</p>
+				<span>Negative</span>
 			</div>
 			<div className={`${styles.axisLabel} ${styles.xRightLabel}`}>
-				<p>Positive</p>
+				<span>Positive</span>
 			</div>
 			<div className={styles.moodPlane}>
 				<div className={`${styles.quadrant1} ${styles.quadrant}`}>
