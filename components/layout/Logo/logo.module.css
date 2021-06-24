@@ -1,0 +1,6 @@
+.logoContainer {
+	display: flex;
+	justify-content: center;
+	min-width: 15rem;
+	color: hsl(210, 77%, 57%);
+}

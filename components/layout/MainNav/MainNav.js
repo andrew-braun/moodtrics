@@ -5,8 +5,10 @@ export default function Layout(props) {
 	return (
 		<nav className={styles.mainNav}>
 			<ul className={styles.navList}>
-				<li>
-					<Link href="/">Home</Link>
+				<li className={styles.navItem}>
+					<Link className={styles.navLink} href="/">
+						Home
+					</Link>
 				</li>
 			</ul>
 		</nav>

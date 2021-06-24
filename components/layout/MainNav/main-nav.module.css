@@ -1,0 +1,8 @@
+.navList {
+	display: flex;
+	padding: 0 4rem 0 0;
+}
+
+.navList .navItem {
+	list-style: none;
+}

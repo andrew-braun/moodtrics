@@ -8,7 +8,7 @@ export default function UserProfile(props) {
 
 	return (
 		<Fragment>
-			<h1>The many moods of {name}</h1>
+			{/* <h1>The many moods of {name}</h1> */}
 			<main>
 				<MoodPlane />
 			</main>
