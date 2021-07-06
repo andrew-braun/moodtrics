@@ -4,3 +4,7 @@
 	min-width: 15rem;
 	color: hsl(210, 77%, 57%);
 }
+
+.logoContainer h2 {
+	margin: 0;
+}

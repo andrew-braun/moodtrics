@@ -3,6 +3,14 @@
 	padding: 0 4rem 0 0;
 }
 
-.navList .navItem {
+.navItem {
 	list-style: none;
+}
+
+.navItem a {
+	padding: 1rem;
+}
+
+.navItem a:hover {
+	opacity: 0.8;
 }

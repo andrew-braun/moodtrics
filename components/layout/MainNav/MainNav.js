@@ -6,9 +6,7 @@ export default function Layout(props) {
 		<nav className={styles.mainNav}>
 			<ul className={styles.navList}>
 				<li className={styles.navItem}>
-					<Link className={styles.navLink} href="/">
-						Home
-					</Link>
+					<Link href="/">Home</Link>
 				</li>
 			</ul>
 		</nav>
