@@ -1,32 +1,15 @@
 import { useEffect, useState } from "react"
+import quadrantGenerator from "../../../helpers/functions/quadrantGenerator"
 import styles from "./mood-plane.module.css"
 
 export default function MoodPlane(props) {
 	const { moods, selectedMood, moodSelectHandler } = props
 
-	const quadrant1Points = quadrantGenerator(1, -10, -1, 10, 1)
-	const quadrant2Points = quadrantGenerator(2, 1, 10, 10, 1)
-	const quadrant3Points = quadrantGenerator(3, 1, 10, -1, -10)
-	const quadrant4Points = quadrantGenerator(4, -10, -1, -1, -10)
-
-	function quadrantGenerator(
-		quadrant,
-		leftXValue,
-		rightXValue,
-		topYValue,
-		bottomYValue
-	) {
-		const filledQuadrant = []
-		for (let y = topYValue; y >= bottomYValue; y--) {
-			for (let x = leftXValue; x <= rightXValue; x++)
-				filledQuadrant.push(
-					<div className={`${styles.point}`} key={`${x}-${y}`}>
-						<span className={styles.pointCoordinates}>{`${x}, ${y}`}</span>
-					</div>
-				)
-		}
-		return filledQuadrant
-	}
+	/* Create four quadrants with labelled cells on a cartesian grid */
+	const quadrant1Points = quadrantGenerator(1, -10, -1, 10, 1, styles)
+	const quadrant2Points = quadrantGenerator(2, 1, 10, 10, 1, styles)
+	const quadrant3Points = quadrantGenerator(3, 1, 10, -1, -10, styles)
+	const quadrant4Points = quadrantGenerator(4, -10, -1, -1, -10, styles)
 
 	return (
 		<div className={styles.moodPlaneContainer}>
