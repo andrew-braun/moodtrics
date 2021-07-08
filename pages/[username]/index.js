@@ -1,6 +1,6 @@
 import { Fragment, useState } from "react"
 import { fetchAllMoods } from "../../helpers/api/mood-api"
-import MoodPlane from "../../components/mood-interactions/MoodPlane/MoodPlane"
+import MoodPicker from "../../components/mood-interactions/MoodPicker/MoodPicker"
 import styles from "./user-profile.module.css"
 
 export default function UserProfile(props) {
@@ -10,7 +10,7 @@ export default function UserProfile(props) {
 		<Fragment>
 			{/* <h1>The many moods of {name}</h1> */}
 			<main>
-				<MoodPlane />
+				<MoodPicker />
 			</main>
 		</Fragment>
 	)
