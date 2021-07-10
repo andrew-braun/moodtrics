@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import quadrantGenerator from "../../../helpers/functions/quadrantGenerator"
+import quadrantGenerator from "../../../../helpers/functions/quadrantGenerator"
 import styles from "./mood-plane.module.css"
 
 export default function MoodPlane(props) {
