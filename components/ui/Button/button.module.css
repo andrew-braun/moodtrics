@@ -18,4 +18,5 @@
 
 .submit {
 	background: var(--color-4);
+	width: clamp(10rem, 18rem, 30rem);
 }
