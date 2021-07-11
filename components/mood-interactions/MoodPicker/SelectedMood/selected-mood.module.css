@@ -1,3 +1,28 @@
 .selectedMood {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	text-align: center;
+	margin: 1rem 0 2rem 0;
+}
+
+.axisNumber {
+	margin: 0 1rem;
+}
+
+.x_axisNumber {
+	text-align: center;
+}
+
+.y_axisNumber {
+	text-align: center;
+}
+
+.axisNumberHeading {
+	margin: 0;
+	font-size: 1.6rem;
+}
+
+.axisNumberText {
+	font-size: 1.4rem;
 }

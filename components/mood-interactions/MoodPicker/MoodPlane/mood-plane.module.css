@@ -11,8 +11,8 @@
 	align-items: center;
 	justify-content: center;
 	align-content: center;
-	width: clamp(320px, 40vw, 640px);
-	height: clamp(320px, 40vw, 640px);
+	width: clamp(280px, 30vw, 640px);
+	height: clamp(280px, 30vw, 640px);
 	margin: auto;
 }
 

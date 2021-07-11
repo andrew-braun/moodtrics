@@ -10,6 +10,11 @@ export default function UserProfile(props) {
 	const name = "Andrew"
 
 	const handleMoodSelect = (event) => {
+		if (
+			!Array.from(event.target.classList).join("").includes("mood-plane_point")
+		) {
+			return
+		}
 		setX_axis(event.target.dataset.x_axis)
 		setY_axis(event.target.dataset.y_axis)
 	}
