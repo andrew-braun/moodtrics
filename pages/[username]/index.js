@@ -1,6 +1,7 @@
 import { Fragment, useState } from "react"
 import { fetchAllMoods } from "../../helpers/api/mood-api"
 import MoodPicker from "../../components/mood-interactions/MoodPicker/MoodPicker"
+import MoodHistory from "../../components/mood-interactions/MoodHistory/MoodHistory"
 import styles from "./user-profile.module.css"
 
 export default function UserProfile(props) {
@@ -28,6 +29,7 @@ export default function UserProfile(props) {
 					x_axis={x_axis}
 					y_axis={y_axis}
 				/>
+				<MoodHistory userMoodHistory={props.userMoodHistoryerMoodHistory} />
 			</main>
 		</Fragment>
 	)
@@ -36,7 +38,7 @@ export default function UserProfile(props) {
 export async function getStaticProps() {
 	return {
 		props: {
-			allMoods: await fetchAllMoods(),
+			userMoodHistory: await fetchAllMoods(),
 		},
 	}
 }
