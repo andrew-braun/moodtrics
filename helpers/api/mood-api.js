@@ -13,21 +13,22 @@ export async function fetchAllMoods() {
 
 	let response = await queryDatabase(getAllMoodsQuery, pool)
 	let data = await response.results
-	console.log(data)
+	// console.log(data)
 	return data
 }
 
 export async function fetchUserMoodHistory(user_id, startDate, endDate) {
-	const pool = await connectToDatabase()
-
-	const moodHistoryQuery = `
-        SELECT time_recorded, x_axis, y_axis
-        FROM moods
-		WHERE user_id = ${user_id};
-        `
-
-	let response = await queryDatabase(moodHistoryQuery, pool)
-	let data = await response.results
-	console.log(data)
-	return data
+	let userMoodHistory = {}
+	try {
+		const response = await fetch(
+			"http://localhost:3000/api/user/get-user-mood-history"
+		)
+		console.log(response)
+		const data = await response.json()
+		userMoodHistory = data
+	} catch (error) {
+		console.log(error)
+	}
+	console.log(userMoodHistory)
+	return userMoodHistory
 }

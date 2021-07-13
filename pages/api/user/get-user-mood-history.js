@@ -15,5 +15,5 @@ export default async function handler(req, res) {
 	// 		WHERE user_id = ${user_id};
 	const response = await queryDatabase(moodHistoryQuery, pool)
 
-	res.status(201).json({ message: response })
+	res.status(201).json({ ...response })
 }

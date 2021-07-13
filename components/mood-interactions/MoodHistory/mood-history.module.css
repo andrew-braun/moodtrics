@@ -1,0 +1,9 @@
+.moodHistorySection {
+	display: flex;
+	justify-content: center;
+	margin-top: 2rem;
+}
+
+.moodHistoryTable {
+	font-size: 1.4rem;
+}
