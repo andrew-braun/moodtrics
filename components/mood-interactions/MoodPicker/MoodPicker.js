@@ -5,7 +5,7 @@ import Button from "../../ui/Button/Button"
 import styles from "./mood-picker.module.css"
 
 export default function MoodPicker(props) {
-	const { handleMoodSelect, x_axis, y_axis } = props
+	const { handleMoodSelect, x_axis, y_axis, handleMoodSubmit } = props
 
 	return (
 		<Fragment>
@@ -16,7 +16,9 @@ export default function MoodPicker(props) {
 				<SelectedMood x_axis={x_axis} y_axis={y_axis} />
 			</div>
 			<div className={styles.submitButtonContainer}>
-				<Button type="submit">Set Mood</Button>
+				<Button type="submit" onClick={handleMoodSubmit}>
+					Set Mood
+				</Button>
 			</div>
 		</Fragment>
 	)

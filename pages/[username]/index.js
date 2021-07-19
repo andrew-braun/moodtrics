@@ -1,5 +1,9 @@
 import { Fragment, useState } from "react"
-import { fetchUserMoodHistory } from "../../helpers/api/mood-api"
+import {
+	fetchUserMoodHistory,
+	insertUserMood,
+} from "../../helpers/api/mood-api"
+
 import MoodPicker from "../../components/mood-interactions/MoodPicker/MoodPicker"
 import MoodHistory from "../../components/mood-interactions/MoodHistory/MoodHistory"
 import styles from "./user-profile.module.css"
@@ -21,6 +25,8 @@ export default function UserProfile(props) {
 		setX_axis(event.target.dataset.x_axis)
 		setY_axis(event.target.dataset.y_axis)
 	}
+
+	const handleMoodSubmit = (moodObject) => {}
 
 	return (
 		<Fragment>
