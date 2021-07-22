@@ -13,6 +13,11 @@ export default function UserProfile(props) {
 	const [y_axis, setY_axis] = useState("0")
 
 	const userMoodHistory = props.userMoodHistory
+	const currentMoodObject = {
+		user_id: 0,
+		x_axis: x_axis,
+		y_axis: y_axis,
+	}
 
 	const name = "Andrew"
 
@@ -26,7 +31,10 @@ export default function UserProfile(props) {
 		setY_axis(event.target.dataset.y_axis)
 	}
 
-	const handleMoodSubmit = (moodObject) => {}
+	const handleMoodSubmit = (event) => {
+		console.log(currentMoodObject)
+		insertUserMood(currentMoodObject)
+	}
 
 	return (
 		<Fragment>
@@ -36,6 +44,7 @@ export default function UserProfile(props) {
 					handleMoodSelect={handleMoodSelect}
 					x_axis={x_axis}
 					y_axis={y_axis}
+					handleMoodSubmit={handleMoodSubmit}
 				/>
 				<MoodHistory userMoodHistory={props.userMoodHistory} />
 			</main>
