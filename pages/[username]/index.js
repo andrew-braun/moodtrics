@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react"
+import { Fragment, useState, useEffect } from "react"
 import {
 	fetchUserMoodHistory,
 	insertUserMood,
@@ -13,13 +13,15 @@ export default function UserProfile(props) {
 	const [y_axis, setY_axis] = useState("0")
 
 	const userMoodHistory = props.userMoodHistory
-	const currentMoodObject = {
-		user_id: 0,
-		x_axis: x_axis,
-		y_axis: y_axis,
-	}
+	let currentMoodObject = {}
 
-	const name = "Andrew"
+	useEffect(() => {
+		currentMoodObject = {
+			user_id: 0,
+			x_axis: x_axis,
+			y_axis: y_axis,
+		}
+	}, [x_axis, y_axis])
 
 	const handleMoodSelect = (event) => {
 		if (
@@ -32,13 +34,11 @@ export default function UserProfile(props) {
 	}
 
 	const handleMoodSubmit = (event) => {
-		console.log(currentMoodObject)
 		insertUserMood(currentMoodObject)
 	}
 
 	return (
 		<Fragment>
-			{/* <h1>The many moods of {name}</h1> */}
 			<main>
 				<MoodPicker
 					handleMoodSelect={handleMoodSelect}
