@@ -1,7 +1,16 @@
+import StackedLine from "../../charts/StackedLine"
 import styles from "./mood-history.module.css"
 
 export default function MoodHistory(props) {
 	const userMoodHistory = props.userMoodHistory.results
+	const userMoodHistoryChartData = userMoodHistory.map((entry) => {
+		let { record_id, time_recorded, x_axis, y_axis } = entry
+		time_recorded = new Date(time_recorded)
+		let strippedEntry = { record_id, time_recorded, x_axis, y_axis }
+		return strippedEntry
+	})
+
+	console.log(userMoodHistoryChartData)
 	const userMoodHistoryTable = userMoodHistory.map((entry) => {
 		let fullDate = new Date(entry.time_recorded)
 
@@ -23,6 +32,9 @@ export default function MoodHistory(props) {
 
 	return (
 		<section className={styles.moodHistorySection}>
+			<div className={styles.userMoodHistoryChart}>
+				<StackedLine chartData={userMoodHistoryChartData} />
+			</div>
 			<table className={styles.moodHistoryTable}>
 				<thead>
 					<tr>

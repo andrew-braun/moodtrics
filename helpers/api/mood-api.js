@@ -9,6 +9,7 @@ export async function fetchUserMoodHistory(user_id, startDate, endDate) {
 	} catch (error) {
 		console.log(error)
 	}
+	// console.log(userMoodHistory)
 	return userMoodHistory
 }
 
