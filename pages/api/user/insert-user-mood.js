@@ -5,7 +5,6 @@ import {
 
 export default async function handler(req, res) {
 	const pool = connectToDatabase()
-	console.log(req.body)
 	const { user_id, x_axis, y_axis } = req.body
 
 	const insertMoodQuery = `

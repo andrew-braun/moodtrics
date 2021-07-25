@@ -13,7 +13,7 @@ export default function MoodHistory(props) {
 			fullDate.getDate()
 
 		return (
-			<tr>
+			<tr key={entry.time_recorded}>
 				<td>{simplifiedDate}</td>
 				<td>{entry.x_axis}</td>
 				<td>{entry.y_axis}</td>
