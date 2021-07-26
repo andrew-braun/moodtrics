@@ -29,8 +29,9 @@ export default function Line(props) {
 		{
 			id: "Test",
 			data: [
-				{ x: "7-17-2021", y: "1" },
-				{ x: "8-17-2021", y: "5" },
+				{ x: "7-17-2021", y: "-5" },
+				{ x: "8-17-2021", y: "8" },
+				{ x: "10-17-2021", y: "-4" },
 			],
 		},
 	]
@@ -48,7 +49,6 @@ export default function Line(props) {
 					precision: "day",
 				}}
 				xFormat="time:%m-%d-%Y"
-				yScale={{ type: "log", base: 10, max: "auto" }}
 				curve="monotoneX"
 				axisTop={null}
 				axisRight={null}
@@ -63,11 +63,14 @@ export default function Line(props) {
 					legendPosition: "middle",
 				}}
 				axisLeft={{
-					tickValues: [0, 1, 2, 3, 4, 5, 6],
+					tickValues: [
+						-10, -9, -8, -7, -6, -5, -4, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+						10,
+					],
 					tickSize: 5,
 					tickPadding: 5,
 					tickRotation: 0,
-					format: "1",
+					format: ".2",
 					legend: "Affect",
 					legendOffset: -40,
 					legendPosition: "middle",
@@ -83,8 +86,8 @@ export default function Line(props) {
 				pointLabel="y"
 				pointLabelYOffset={-12}
 				useMesh={true}
-				gridXValues={[0, 20, 40, 60, 80, 100, 120]}
-				gridYValues={[-10, -5, 0, 5, 10]}
+				// gridXValues={[0, 20, 40, 60, 80, 100, 120]}
+				// gridYValues={[-10, -5, 0, 5, 10]}
 			/>
 		</div>
 	)
