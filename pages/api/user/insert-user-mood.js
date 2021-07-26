@@ -8,8 +8,8 @@ export default async function handler(req, res) {
 	const { user_id, x_axis, y_axis } = req.body
 
 	const insertMoodQuery = `
-        INSERT INTO user_moods (user_id, mood_id, x_axis, y_axis)
-        VALUES (${user_id}, 1, ${x_axis}, ${y_axis})
+        INSERT INTO user_moods (user_id, x_axis, y_axis)
+        VALUES (${user_id}, ${x_axis}, ${y_axis})
 		`
 
 	let response = await queryDatabase(insertMoodQuery, pool)

@@ -1,5 +1,6 @@
 import { Component, useState, useEffect } from "react"
 import { ResponsiveLine } from "@nivo/line"
+import { ResponsiveBar } from "@nivo/bar"
 import styles from "./line.module.css"
 
 export default function Line(props) {
@@ -7,57 +8,67 @@ export default function Line(props) {
 	const chartDataFormatted = chartData.map((entry) => {
 		const { record_id, time_recorded, x_axis, y_axis } = entry
 		console.log(time_recorded)
-		const entryFormatted = {
+		const x_axisFormatted = {
 			x: time_recorded,
 			y: x_axis,
 		}
-		return entryFormatted
+		return x_axisFormatted
 	})
-	for (let object of chartDataFormatted) {
-		console.log(object)
+
+	const affectData = {
+		id: "Affect",
+		data: chartDataFormatted,
 	}
 
+	console.log(affectData)
+	// for (let object of chartDataFormatted) {
+	// 	console.log(object)
+	// }
+
+	const data = [
+		{
+			id: "Test",
+			data: [
+				{ x: "7-17-2021", y: "1" },
+				{ x: "8-17-2021", y: "5" },
+			],
+		},
+	]
 	return (
 		<div className={styles.chart}>
+			<h2>Chart</h2>
+
 			<ResponsiveLine
-				data={[
-					{
-						id: "x",
-						data: { chartDataFormatted },
-					},
-				]}
+				data={data}
 				margin={{ top: 50, right: 160, bottom: 50, left: 60 }}
-				xScale={{ format: "%Y-%m-%dT%H:%M:%S.%L%Z", type: "time" }}
-				xFormat="time:%Y-%m-%dT%H:%M:%S.%L%Z"
-				yScale={{ type: "linear", stacked: true, min: 0.0, max: 1.0 }}
+				xScale={{
+					format: "%m-%d-%Y",
+					type: "time",
+					useUTC: false,
+					precision: "day",
+				}}
+				xFormat="time:%m-%d-%Y"
+				yScale={{ type: "log", base: 10, max: "auto" }}
 				curve="monotoneX"
 				axisTop={null}
-				axisRight={{
-					tickValues: [0.0, 0.2, 0.4, 0.6, 0.8, 1.0],
-					tickSize: 5,
-					tickPadding: 5,
-					tickRotation: 0,
-					format: "0.2",
-					legend: "",
-					legendOffset: 0,
-				}}
+				axisRight={null}
 				axisBottom={{
-					tickValues: "every 1 second",
+					tickValues: "every 7 days",
 					tickSize: 5,
 					tickPadding: 5,
 					tickRotation: 0,
-					format: "%S.%L",
+					format: "%b %d",
 					legend: "Time",
 					legendOffset: 36,
 					legendPosition: "middle",
 				}}
 				axisLeft={{
-					tickValues: [0.0, 0.2, 0.4, 0.6, 0.8, 1.0],
+					tickValues: [0, 1, 2, 3, 4, 5, 6],
 					tickSize: 5,
 					tickPadding: 5,
 					tickRotation: 0,
-					format: ".2",
-					legend: "CPU",
+					format: "1",
+					legend: "Affect",
 					legendOffset: -40,
 					legendPosition: "middle",
 				}}

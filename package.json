@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@nivo/bar": "^0.73.1",
     "@nivo/line": "^0.73.0",
     "next": "^11.0.1",
     "pg": "^8.6.0",
