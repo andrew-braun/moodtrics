@@ -45,7 +45,7 @@ export default function Line(props) {
 
 			<ResponsiveLine
 				data={affectData}
-				margin={{ top: 50, right: 160, bottom: 50, left: 60 }}
+				margin={{ top: 100, right: 100, bottom: 100, left: 100 }}
 				xScale={{
 					format: "%m-%d-%Y",
 					type: "time",
@@ -57,7 +57,7 @@ export default function Line(props) {
 				axisTop={null}
 				axisRight={null}
 				axisBottom={{
-					tickValues: "every 7 days",
+					tickValues: "every day",
 					tickSize: 5,
 					tickPadding: 5,
 					tickRotation: 0,
@@ -71,8 +71,10 @@ export default function Line(props) {
 						-10, -9, -8, -7, -6, -5, -4, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
 						10,
 					],
+					max: 10,
+					min: -10,
 					tickSize: 5,
-					tickPadding: 5,
+					tickPadding: 10,
 					tickRotation: 0,
 					format: ".2",
 					legend: "Affect",
@@ -80,7 +82,7 @@ export default function Line(props) {
 					legendPosition: "middle",
 				}}
 				enableGridX={false}
-				colors={{ scheme: "spectral" }}
+				colors={{ scheme: "nivo" }}
 				lineWidth={1}
 				pointSize={4}
 				pointColor={{ theme: "background" }}
@@ -91,7 +93,7 @@ export default function Line(props) {
 				pointLabelYOffset={-12}
 				useMesh={true}
 				// gridXValues={[0, 20, 40, 60, 80, 100, 120]}
-				// gridYValues={[-10, -5, 0, 5, 10]}
+				gridYValues={[-10, -5, 0, 5, 10]}
 			/>
 		</div>
 	)
