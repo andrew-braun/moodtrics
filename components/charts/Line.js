@@ -9,16 +9,18 @@ export default function Line(props) {
 		const { record_id, time_recorded, x_axis, y_axis } = entry
 		console.log(time_recorded)
 		const x_axisFormatted = {
-			x: time_recorded,
-			y: x_axis,
+			x: String(time_recorded),
+			y: x_axis.toString(),
 		}
 		return x_axisFormatted
 	})
 
-	const affectData = {
-		id: "Affect",
-		data: chartDataFormatted,
-	}
+	const affectData = [
+		{
+			id: "Affect",
+			data: [...chartDataFormatted],
+		},
+	]
 
 	console.log(affectData)
 	// for (let object of chartDataFormatted) {
@@ -35,12 +37,14 @@ export default function Line(props) {
 			],
 		},
 	]
+
+	console.log(data)
 	return (
 		<div className={styles.chart}>
 			<h2>Chart</h2>
 
 			<ResponsiveLine
-				data={data}
+				data={affectData}
 				margin={{ top: 50, right: 160, bottom: 50, left: 60 }}
 				xScale={{
 					format: "%m-%d-%Y",
