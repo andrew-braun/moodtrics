@@ -1,4 +1,5 @@
 import Line from "../../charts/Line"
+import TimeSeries from "../../charts/TimeSeries/TimeSeries"
 import styles from "./mood-history.module.css"
 
 export default function MoodHistory(props) {
@@ -35,6 +36,7 @@ export default function MoodHistory(props) {
 	return (
 		<section className={styles.moodHistorySection}>
 			<div className={styles.userMoodHistoryChart}>
+				<TimeSeries chartData={userMoodHistoryChartData} />
 				<Line chartData={userMoodHistoryChartData} />
 			</div>
 			<table className={styles.moodHistoryTable}>
