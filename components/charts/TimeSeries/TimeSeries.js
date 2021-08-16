@@ -15,6 +15,15 @@ export default function TimeSeries(props) {
 		return x_axisFormatted
 	})
 
+	const energyObservations = chartData.map((entry) => {
+		const observationObject = {
+			x: entry.time_recorded,
+			y: entry.y_axis,
+		}
+		return observationObject
+	})
+	console.log(energyObservations)
+
 	// const affectData = [
 	// 	{
 	// 		id: "Affect", "Energy",
@@ -33,21 +42,30 @@ export default function TimeSeries(props) {
 	// 	console.log(object)
 	// }
 
-	const testData = [
-		new Date(2021, 7, 17).toLocaleDateString(),
-		new Date(2021, 8, 18).toLocaleDateString(),
-		new Date(2021, 10, 19).toLocaleDateString(),
-	]
+	// const testData = [
+	// 	new Date(2021, 7, 17).toLocaleDateString(),
+	// 	new Date(2021, 8, 18).toLocaleDateString(),
+	// 	new Date(2021, 10, 19).toLocaleDateString(),
+	// ]
+
+	// const data = {
+	// 	labels: testData,
+	// 	datasets: [
+	// 		{
+	// 			label: "Score",
+	// 			data: [-5, -2, -3],
+	// 			fill: false,
+	// 			backgroundColor: "rgb(255, 99, 132)",
+	// 			borderColor: "rgba(255, 99, 132, 0.2)",
+	// 		},
+	// 	],
+	// }
 
 	const data = {
-		labels: testData,
 		datasets: [
 			{
 				label: "Score",
-				data: [-5, -2, -3],
-				fill: false,
-				backgroundColor: "rgb(255, 99, 132)",
-				borderColor: "rgba(255, 99, 132, 0.2)",
+				data: energyObservations,
 			},
 		],
 	}
@@ -58,6 +76,14 @@ export default function TimeSeries(props) {
 				{
 					ticks: {
 						beginAtZero: true,
+					},
+				},
+			],
+			xAxes: [
+				{
+					type: "time",
+					time: {
+						unit: "month",
 					},
 				},
 			],

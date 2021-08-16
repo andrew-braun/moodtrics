@@ -13,6 +13,7 @@ export default function UserProfile(props) {
 	const [y_axis, setY_axis] = useState("0")
 
 	const userMoodHistory = props.userMoodHistory
+
 	let currentMoodObject = {}
 
 	useEffect(() => {
