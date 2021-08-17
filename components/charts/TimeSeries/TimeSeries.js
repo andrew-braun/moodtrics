@@ -17,7 +17,7 @@ export default function TimeSeries(props) {
 
 	const energyObservations = chartData.map((entry) => {
 		const observationObject = {
-			x: entry.time_recorded,
+			x: entry.time_recorded.toLocaleDateString(),
 			y: entry.y_axis,
 		}
 		return observationObject
